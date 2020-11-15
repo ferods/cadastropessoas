@@ -1,0 +1,81 @@
+<html>
+<head th:replace="~{base :: head}">
+</head>
+<body>
+<div th:replace="~{base :: logo}"></div>
+   <div class="container">
+		
+		<div th:replace="~{base :: titulo(${pessoa.nome})}"></div>
+
+		<nav th:replace="~{base :: navegacao}"></nav>
+	
+			<div class="card mb-3 ">
+				<div class="card-header ">
+					<a th:href="@{/pessoas/alterar(id=${pessoa.cpf})}">
+				     Alterar
+			        </a>
+			        <a href="#"
+								onclick="document.querySelector('#form-remover').submit()">Remover</a>
+							<form th:action="@{/pessoas/remover}" id="form-remover"
+								method="post">
+								<input type="hidden" th:value="${pessoa.cpf}"
+									name="pessoaCpfRemover" />
+							</form>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-8">
+							<div>
+								CPF: <span th:text="${pessoa.cpf}"></span>
+							</div>
+							<div class="card-body">
+								<div>
+									CEP: <span th:text="${pessoa.endereco.cep}"></span>
+								</div>
+								<div class="row">
+									<div class="col-5">
+										Logradouro: <span th:text="${pessoa.endereco.logradouro}"></span>
+									</div>
+									<div class="col-7">
+										Numero: <span th:text="${pessoa.endereco.numero}"></span>
+									</div>
+								</div>
+								<div>
+									Complemento: <span th:text="${pessoa.endereco.complemento}"></span>
+								</div>
+
+								<div>
+									Cidade: <span th:text="${pessoa.endereco.cidade}"></span>
+								</div>
+								<div>
+									Bairro: <span th:text="${pessoa.endereco.bairro}"></span>
+								</div>
+							</div>
+							<div>
+								Data de Nascimento: <span th:text="${#temporals.format(pessoa.dataNascimento, 'dd/MM/yyyy')}"></span>
+							</div>
+							<div>
+								Mãe: <span th:text="${pessoa.nomeMae}"></span>
+							</div>
+							<div>
+								telefone1: <span th:text="${pessoa.telefonePrincipal}"></span>
+							</div>
+							<div>
+								telefone2: <span th:text="${pessoa.telefoneSecundario}"></span>
+							</div>
+							<div>
+								email: <span th:text="${pessoa.email}"></span>
+							</div>
+
+						</div>
+
+						<div class="col-4">
+							<img th:src="${pessoa.urlImagem}" class="img-thumbnail" src="">
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</body>
+</html>

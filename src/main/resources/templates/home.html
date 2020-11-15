@@ -1,0 +1,84 @@
+<html>
+<head th:replace="~{base :: head}">
+
+</head>
+<body>
+
+	<div th:replace="~{base :: logo}"></div>
+
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Pessoas')}"></div>
+
+		<nav th:replace="~{base :: navegacao}"></nav>
+
+		<div class="card mb-3 " th:each="pessoa : ${pessoas}">
+
+			<th:block th:switch="${pessoa.dadosCompletosOuIncompletos.name()}">
+				<div th:case="'COMPLETOS'" class="card-header alert-dark">
+
+
+
+					<div class=" row justify-content-between">
+						<div class="nav-item">
+							<a class="nav-item"
+								th:href="@{/pessoas/detalhes(id=${pessoa.cpf})}"> <span
+								th:text="${pessoa.nome}"></span>
+							</a>
+						</div>
+
+
+						<div class="nav-item ml-5">
+							<a th:href="@{/pessoas/alterar(id=${pessoa.cpf})}"> Alterar </a>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div th:case="'INCOMPLETOS'" class="card-header alert-warning">
+
+					<div class=" row justify-content-between">
+						<div class="nav-item">
+							<a class="nav-item"
+								th:href="@{/pessoas/detalhes(id=${pessoa.cpf})}"> <span
+								th:text="${pessoa.nome}"></span>
+							</a>
+						</div>
+
+
+						<div class="nav-item ml-5">
+							<a th:href="@{/pessoas/alterar(id=${pessoa.cpf})}"> Alterar </a>
+						</div>
+					</div>
+				</div>
+
+			</th:block>
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-8">
+						<div>
+							CPF: <span th:text="${pessoa.cpf}"></span>
+						</div>
+						<div>
+							telefone1: <span th:text="${pessoa.telefonePrincipal}"></span>
+						</div>
+						<div>
+							telefone2: <span th:text="${pessoa.telefoneSecundario}"></span>
+						</div>
+						<div>
+							email: <span th:text="${pessoa.email}"></span>
+						</div>
+
+					</div>
+
+					<div class="col-4">
+						<img th:src="${pessoa.urlImagem}" class="img-thumbnail" src="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<html>
+<head th:replace="~{base :: head}">
+</head>
+<body>
+<div th:replace="~{base :: logo}"></div>
+	<div class="container">
+		<div th:replace="~{base :: titulo('Cadastrar')}"></div>
+		<nav th:replace="~{base :: navegacao}"></nav>
+
+		<div class="mt-3">
+			<form th:object="${requisicaoNovaPessoa}" th:action="@{/pessoas}" method="post" enctype="multipart/form-data">
+			
+			    <div class="form-group">
+					<label for="cpf">CPF</label> 
+					<input th:field="*{cpf}"  th:errorclass="is-invalid" class="form-control" placeholder="cpf" /> 
+					<div  class="invalid-feedback" th:errors="*{cpf}">
+					</div>
+					<small class="form-text text-muted">Inserir CPF</small>
+				</div>
+			
+				<div class="form-group">
+					<label for="nome">Nome Completo</label> 
+					<input th:field="*{nome}" th:errorclass="is-invalid" class="form-control" placeholder="nome completo" /> 
+					<div class="invalid-feedback" th:errors="*{nome}">
+					</div>
+					<small class="form-text text-muted">Inserir o nome completo</small>
+				</div>
+				
+				<div class="form-group">
+					<label for="cep">CEP</label> 
+					<input th:field="*{cep}" class="form-control" placeholder="cep" /> 
+					<div th:errors="*{cep}">
+					</div>
+					<small class="form-text text-muted">Inserir o CEP da residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="logradouro">Logradouro</label> 
+					<input th:field="*{logradouro}"	class="form-control"  placeholder="logradouro" />
+					<div th:errors="*{logradouro}">
+					</div>
+					<small class="form-text text-muted">Inserir o logradouro da
+						residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="numero">Numero</label> 
+					<input th:field="*{numero}" class="form-control" placeholder="numero" /> 
+					<div th:errors="*{numero}">
+					</div>
+					<small class="form-text text-muted">Inserir o numero da residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="complemento">Complemento</label> 
+					<input th:field="*{complemento}" class="form-control" placeholder="complemento" />
+					<div th:errors="*{complemento}">
+					</div>
+					<small class="form-text text-muted">Inserir o complemento da residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="bairro">Bairro</label> 
+					<input th:field="*{bairro}" class="form-control"  placeholder="bairro" /> 
+					<div th:errors="*{bairro}">
+					</div>
+					<small class="form-text text-muted">Inserir o bairro da residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="cidade">Cidade</label> 
+					<input th:field="*{cidade}" class="form-control" placeholder="cidade" /> 
+					<div th:errors="*{cidade}">
+					</div>
+					<small class="form-text text-muted">Inserir o cidade da residencia do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="dataNascimento">Data de Nascimento</label> 
+					<input th:field="*{dataNascimento}" class="form-control"  placeholder="Data de Nascimento" /> 
+					<div th:errors="*{dataNascimento}">
+					</div>
+					<small class="form-text text-muted">Inserir a data de nascimento do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="nomeMae">Mãe</label> 
+					<input th:field="*{nomeMae}" class="form-control" placeholder="Nome da Mae" /> 
+					<div th:errors="*{nomeMae}">
+					</div>
+					<small class="form-text text-muted">Inserir o nome da mãe do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="telefonePrincipal">Telefone 1</label> 
+					<input th:field="*{telefonePrincipal}" class="form-control" placeholder="Telefone principal" /> 
+					<div th:errors="*{telefonePrincipal}">
+					</div>
+					<small class="form-text text-muted">Inserir o telefone principal do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="telefoneSecundario">Telefone 2</label> 
+					<input th:field="*{telefoneSecundario}" class="form-control" placeholder="Telefone secundario" /> 
+					<div th:errors="*{telefoneSecundario}">
+					</div>
+					<small class="form-text text-muted">Inserir o telefone secundário do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label> 
+					<input th:field="*{email}" class="form-control" placeholder="email" /> 
+					<div th:errors="*{email}">
+					</div>
+					<small class="form-text text-muted">Inserir o email do contato</small>
+				</div>
+				<div class="form-group">
+					<label for="Imagem">Imagem</label> 
+					<input type="file" name="imagem" class="form-control-file" placeholder="Imagem" /> 
+					<small class="form-text text-muted">Inserir imagem do contato</small>
+								
+				</div>
+				
+				
+				<div>
+					Dados completos?
+					<select th:field="*{dadosCompletosOuIncompletos}">
+						<option value="COMPLETOS">COMPLETOS</option>
+						<option value="INCOMPLETOS">INCOMPLETOS</option>				
+					</select>
+				</div>
+				
+				
+				
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
